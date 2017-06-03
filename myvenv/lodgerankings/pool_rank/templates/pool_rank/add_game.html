@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<!--
+    Escape Velocity by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        {% load static %}
+        <title>Lodge Rankings</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="{% static 'pool_rank/assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+        <link rel="stylesheet" href="{% static 'pool_rank/assets/css/main.css' %}" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="{% static 'pool_rank/assets/css/ie8.css' %}" /><![endif]-->
+    </head>
+    <body class="homepage">
+        <div id="page-wrapper">
+
+            <!-- Header -->
+                <div id="header-wrapper" class="wrapper">
+                    <div id="header">
+
+                        <!-- Logo -->
+                            <div id="logo">
+                                <h1><a href="index.html">Billiards: Add a Game</a></h1>
+                                <p>Add a new game to the rankings</p>
+                            </div>
+
+                        <!-- Nav -->
+                            <nav id="nav">
+                                <ul>
+                                    <li class="current"><a href="{% url 'main_index' %}">Main</a></li>
+                                    <li><a href="{% url 'pool_rank:index' %}">Home</a></li>
+                                    <li><a href="{% url 'pool_rank:rankings' %}">Rankings</a></li>
+                                    <li><a href="{% url 'pool_rank:recent_games' %}">Recent Games</a></li>
+                                    <li><a href="{% url 'pool_rank:add_game' %}">Add Game</a></li>
+                                    <li><a href="{% url 'pool_rank:players' %}">Players</a></li>
+                                </ul>
+                            </nav>
+
+                    </div>
+                </div>
+
+            <!-- Intro -->
+                <div id="intro-wrapper" class="wrapper style1">
+                    <div class="title">Add Game</div>
+                    <section id="intro" class="container">
+                        <form action="{% url 'pool_rank:add_game' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="6u 12(mobile)">
+                                    {{ form.winner1.label_tag }}
+                                    {{ form.winner1 }}
+                                </div>
+                                <div class="6u 12(mobile)">
+                                    {{ form.winner2.label_tag }}
+                                    {{ form.winner2 }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="6u 12(mobile)">
+                                    {{ form.loser1.label_tag }}
+                                    {{ form.loser1 }}
+                                </div>
+                                <div class="6u 12(mobile)">
+                                    {{ form.loser2.label_tag }}
+                                    {{ form.loser2 }}
+                                </div>
+                            </div>
+                            <br />
+                            {{ form.date.label_tag }}
+                            {{ form.date }}<br />
+                            <input type="submit" value="Submit" />
+                        </form>
+                        <p class=style3>
+                            *Note: The second winner and loser are not required.<br />
+                            Games can be 1v1, 2v1, or 2v2.
+                        </p>
+                    </section>
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+        </div>
+
+        <!-- Scripts -->
+
+            <script src="{% static 'pool_rank/assets/js/jquery.min.js' %}"></script>
+            <script src="{% static 'pool_rank/assets/js/jquery.dropotron.min.js' %}"></script>
+            <script src="{% static 'pool_rank/assets/js/skel.min.js' %}"></script>
+            <script src="{% static 'pool_rank/assets/js/skel-viewport.min.js' %}"></script>
+            <script src="{% static 'pool_rank/assets/js/util.js' %}"></script>
+            <!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+            <script src="{% static 'pool_rank/assets/js/main.js' %}"></script>
+
+    </body>
+</html>
