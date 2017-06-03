@@ -44,9 +44,87 @@
 
             <!-- Intro -->
                 <div id="intro-wrapper" class="wrapper style1">
-                    <div class="title">Add Game</div>
+                    <div class="title">Statistics</div>
                     <section id="intro" class="container">
+                        <p class="style3">
+                            <h1>{{ player.first_name }} {{ player.last_name }}</h1><br />
+                            <table>
+                                <tr>
+                                    <th><h4>Place</h4></th>
+                                    <th><h4>Score</h4></th>
+                                    <th><h4>Games Played</h4></th>
+                                    <th><h4>Win Percentage</h4></th>
+                                    <th><h4>Wins</h4></th>
+                                    <th><h4>Losses</h4><th>
+                                </tr>
+                                <tr>
+                                    <td>{{ place }}</td>
+                                    <td>{{ score.score }}</td>
+                                    <td>{{ score.games_played }}</td>
+                                    <td>{{ score.win_percent }} %</td>
+                                    <td>{{ score.wins }}</td>
+                                    <td>{{ score.losses }}</td>
+                                </tr>
+                            </table>
+                        </p>
+                    </section>
+                </div>
 
+            <!-- Main -->
+                <div class="wrapper style2">
+                    <div class="title">Recent Wins</div>
+                        <section id="highlights" class="container">
+                            <div class="row 150%">
+                                {% for game in recent_wins %}
+                                    <div class="4u 12u(mobile)">
+                                        <section class="highlight2">
+                                            <h3>{{ game.percent }}% Likelihood</h3>
+                                            <h4>
+                                                {{ game.winner1 }}
+                                                {% if game.winner2 %}
+                                                    and {{ game.winner2 }}
+                                                {% endif %} </br>
+                                                defeated </br>
+                                                {{ game.loser1 }}
+                                                {% if game.loser2 %}
+                                                    and {{ game.loser2 }}
+                                                {% endif %}
+                                            </h4>
+                                            <p>on {{ game.date }} </p>
+                                        </section>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+            <!-- Highlights -->
+                <div class="wrapper style3">
+                    <div class="title">Recent Losses</div>
+                    <section id="highlights" class="container">
+                        <div class="row 150%">
+                            {% for game in recent_losses %}
+                                <div class="4u 12u(mobile)">
+                                    <section class="highlight2">
+                                        <h3>{{ game.percent }}% Likelihood</h3>
+                                        <h4>
+                                            {{ game.winner1 }}
+                                            {% if game.winner2 %}
+                                                and {{ game.winner2 }}
+                                            {% endif %} </br>
+                                            defeated </br>
+                                            {{ game.loser1 }}
+                                            {% if game.loser2 %}
+                                                and {{ game.loser2 }}
+                                            {% endif %}
+                                        </h4>
+                                        <p>on {{ game.date }} </p>
+                                    </section>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </section>
                     <div id="copyright">
                         <ul>

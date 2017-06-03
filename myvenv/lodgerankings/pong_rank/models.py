@@ -19,3 +19,17 @@ class PongScore(models.Model):
 
     def publish(self):
         self.save()
+
+
+class PongGame(models.Model):
+    winner1 = models.ForeignKey('house.Player', related_name='pong_winner1')
+    winner2 = models.ForeignKey('house.Player', related_name='pong_winner2',
+        blank=True, null=True)
+    loser1 = models.ForeignKey('house.Player', related_name='pong_loser1')
+    loser2 = models.ForeignKey('house.Player', related_name='pong_loser2',
+        blank=True, null=True)
+    date = models.DateField()
+    percent = models.FloatField()
+
+    def publish(self):
+        self.save()

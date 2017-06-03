@@ -1575,6 +1575,10 @@
 			.wrapper.style1 h1, .wrapper.style1 h2, .wrapper.style1 h3, .wrapper.style1 h4, .wrapper.style1 h5, .wrapper.style1 h6, .wrapper.style1 strong, .wrapper.style1 b, .wrapper.style1 a {
 				color: rgba(0, 0, 0, 0.75);
 			}
+			
+			.wrapper.style1 h1 {
+			    font-size: 18pt;
+                            }
 
 		.wrapper.style2 {
 			background: #fff;
@@ -1584,6 +1588,10 @@
 				background: #fff;
 				color: #484d55;
 			}
+			
+			.wrapper.style2 h4 {
+			    color: #e97770
+			    }
 
 		.wrapper.style3 {
 			background: #f3f3f3 url("images/overlay.png");
@@ -1741,6 +1749,18 @@
 		
 		#highlights .highlight h4 {
 		        color: #eee
+                }
+
+        #highlights .highlight2 {
+		text-align: center;
+	}
+
+		#highlights .highlight2 h3 {
+			color: #091221;
+		}
+		
+		#highlights .highlight2 h4 {
+		        color: #e97770
                 }
 
 /* Copyright */
@@ -2147,6 +2167,12 @@
 		/* Highlights */
 
 			#highlights .highlight h3 {
+				margin: 0 0 0.75em 0;
+				font-size: 2em;
+				letter-spacing: 0.05em;
+			}
+			
+			#highlights .highlight2 h3 {
 				margin: 0 0 0.75em 0;
 				font-size: 2em;
 				letter-spacing: 0.05em;

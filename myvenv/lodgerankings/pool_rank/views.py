@@ -1,11 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
+from django.shortcuts import get_object_or_404
 
 from house.models import Player
 from .models import PoolScore, PoolGame
 
 from forms import PoolGameForm
 
-from rank_functions import update_players_pool
+from rank_functions import update_players, get_recent_games
 
 # Create your views here.
 
@@ -57,7 +58,7 @@ def add_game(request):
             loser1 = form.cleaned_data['loser1']
             loser2 = form.cleaned_data['loser2']
             date = form.cleaned_data['date']
-            update_players_pool(winner1, winner2, loser1, loser2, date)
+            update_players(winner1, winner2, loser1, loser2, date)
             return HttpResponseRedirect(reverse('pool_rank:add_game'))
         else:
             msg = 'Error: invalid form'
@@ -74,64 +75,21 @@ def players(request):
 
 
 def player_detail(request, netid):
-    pass
-"""
-def recent_games(request):
-    games = Game.objects.order_by('played_date')
-    return render(request, 'ping_pong_rank/recent_games.html', {'games': games})
-
-
-def add_game(request):
-    return render(request, 'ping_pong_rank/add_game.html', {})
-
-
-def update(request):
-    if request.method == 'POST':
-        try:
-            entered_winner = request.POST['Winner_netid']
-            entered_loser = request.POST['Loser_netid']
-            entered_date = request.POST['Date_Played']
-        except:
-            return render(request, 'ping_pong_rank/add_game.html',
-                {'error_message': "One or more fields were not entered"})
-        try:
-            game_winner = get_object_or_404(Player, pk=entered_winner)
-            game_loser = get_object_or_404(Player, pk=entered_loser)
-        except:
-            return render(request, 'ping_pong_rank/add_game.html',
-                {'error_message': "Invalid netid"})
-        date = str(entered_date)
-        game_winner.wins += 1
-        game_loser.losses += 1
-        game_winner.publish()
-        game_loser.publish()
-        index1 = date.find('-')
-        index2 = date.rfind('-')
-        year = int(date[:index1])
-        month = int(date[index1 + 1:index2])
-        day = int(date[index2 + 1:])
-        date_object = datetime.date(year, month, day)
-        game = Game(winner=str(game_winner.netid),
-            loser=str(game_loser.netid),
-            played_date=date_object)
-        game.publish()
-        return HttpResponseRedirect(reverse('ping_pong_rank:update'))
-    elif request.method == 'GET':
-        return render(request, 'ping_pong_rank/add_game.html', {})
-
-
-def player_detail(request, netid):
-    players = Player.objects.order_by('-score')
+    scores = PoolScore.objects.order_by('-score')
     place = 1
-    for player in players:
-        if player.netid == netid:
+    for score in scores:
+        if score.player.netid == netid:
             break
         else:
             place += 1
     player = get_object_or_404(Player, pk=netid)
-    recent_wins = Game.objects.all().filter(winner=netid).order_by('date')[:5]
-    recent_losses = Game.objects.all().filter(loser=netid).order_by('date')[:5]
-    d = {'player': player, 'place': place, 'recent_wins': recent_wins,
-        'recent_losses': recent_losses}
-    return render(request, 'ping_pong_rank/player_detail.html', d)
-"""
+    recent_wins1 = PoolGame.objects.all().filter(winner1=netid)
+    recent_wins2 = PoolGame.objects.all().filter(winner2=netid)
+    recent_wins = get_recent_games(recent_wins1, recent_wins2, 3)
+    recent_losses1 = PoolGame.objects.all().filter(loser1=netid)
+    recent_losses2 = PoolGame.objects.all().filter(loser1=netid)
+    recent_losses = get_recent_games(recent_losses1, recent_losses2, 3)
+    score = get_object_or_404(PoolScore, player=player)
+    return render(request, 'pool_rank/player_detail.html', {'player': player,
+        'score': score, 'place': place, 'recent_wins': recent_wins,
+        'recent_losses': recent_losses})

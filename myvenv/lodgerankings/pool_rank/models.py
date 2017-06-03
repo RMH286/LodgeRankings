@@ -23,11 +23,11 @@ class PoolScore(models.Model):
 
 
 class PoolGame(models.Model):
-    winner1 = models.ForeignKey('house.Player', related_name='winner1')
-    winner2 = models.ForeignKey('house.Player', related_name='winner2',
+    winner1 = models.ForeignKey('house.Player', related_name='pool_winner1')
+    winner2 = models.ForeignKey('house.Player', related_name='pool_winner2',
         blank=True, null=True)
-    loser1 = models.ForeignKey('house.Player', related_name='loser1')
-    loser2 = models.ForeignKey('house.Player', related_name='loser2',
+    loser1 = models.ForeignKey('house.Player', related_name='pool_loser1')
+    loser2 = models.ForeignKey('house.Player', related_name='pool_loser2',
         blank=True, null=True)
     date = models.DateField()
     percent = models.FloatField()

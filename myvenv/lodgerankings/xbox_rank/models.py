@@ -19,3 +19,17 @@ class XboxScore(models.Model):
 
     def publish(self):
         self.save()
+
+
+class XboxGame(models.Model):
+    winner1 = models.ForeignKey('house.Player', related_name='xbox_winner1')
+    winner2 = models.ForeignKey('house.Player', related_name='xbox_winner2',
+        blank=True, null=True)
+    loser1 = models.ForeignKey('house.Player', related_name='xbox_loser1')
+    loser2 = models.ForeignKey('house.Player', related_name='xbox_loser2',
+        blank=True, null=True)
+    date = models.DateField()
+    percent = models.FloatField()
+
+    def publish(self):
+        self.save()
