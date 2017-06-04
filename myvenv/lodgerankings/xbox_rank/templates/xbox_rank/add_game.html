@@ -23,8 +23,8 @@
 
                         <!-- Logo -->
                             <div id="logo">
-                                <h1><a href="index.html">Xbox Rankings</a></h1>
-                                <p>Housewide rankings for Xbox</p>
+                                <h1><a href="index.html">Xbox: Add a Game</a></h1>
+                                <p>Add a new game to the rankings</p>
                             </div>
 
                         <!-- Nav -->
@@ -44,14 +44,45 @@
 
             <!-- Intro -->
                 <div id="intro-wrapper" class="wrapper style1">
-                    <div class="title">Info</div>
+                    <div class="title">Add Game</div>
                     <section id="intro" class="container">
-                        <p class="style1">Main Landing Page for Lodge Xbox</p>
-                        <p class="style2">
-                            Click on one of the above links<br class="mobile-hide" />
-                            to find more info
+                        <form action="{% url 'xbox_rank:add_game' %}" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="6u 12(mobile)">
+                                    {{ form.winner1.label_tag }}
+                                    {{ form.winner1 }}
+                                </div>
+                                <div class="6u 12(mobile)">
+                                    {{ form.winner2.label_tag }}
+                                    {{ form.winner2 }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="6u 12(mobile)">
+                                    {{ form.loser1.label_tag }}
+                                    {{ form.loser1 }}
+                                </div>
+                                <div class="6u 12(mobile)">
+                                    {{ form.loser2.label_tag }}
+                                    {{ form.loser2 }}
+                                </div>
+                            </div>
+                            <br />
+                            {{ form.date.label_tag }}
+                            {{ form.date }}<br />
+                            <input type="submit" value="Submit" />
+                        </form>
+                        <p class=style3>
+                            *Note: The second winner and loser are not required.<br />
+                            Games can be 1v1, 2v1, or 2v2.
                         </p>
                     </section>
+                    <div id="copyright">
+                        <ul>
+                            <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        </ul>
+                    </div>
                 </div>
 
         </div>

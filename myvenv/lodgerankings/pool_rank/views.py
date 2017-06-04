@@ -18,15 +18,27 @@ def index(request):
 def rankings(request):
     scores = PoolScore.objects.order_by('-score')
     percents = PoolScore.objects.order_by('-win_percent')
-    highest_percent = percents[0]
-    lowest_percent = percents[len(percents) - 1]
+    if len(percents) > 0:
+        highest_percent = percents[0]
+        lowest_percent = percents[len(percents) - 1]
+    else:
+        highest_percent = "N/A"
+        lowest_percent = "N/A"
     wins = PoolScore.objects.order_by('-wins')
-    most_wins = wins[0]
     losses = PoolScore.objects.order_by('-losses')
-    most_losses = losses[0]
+    if len(wins) > 0:
+        most_wins = wins[0]
+        most_losses = losses[0]
+    else:
+        most_wins = "N/A"
+        most_losses = "N/A"
     games_played = PoolScore.objects.order_by('-games_played')
-    most_games = games_played[0]
-    fewest_games = games_played[len(games_played) - 1]
+    if len(games_played) > 0:
+        most_games = games_played[0]
+        fewest_games = games_played[len(games_played) - 1]
+    else:
+        most_games = "N/A"
+        fewest_games = "N/A"
 
     return render(request, 'pool_rank/rankings.html',
         {'scores': scores,
@@ -58,7 +70,7 @@ def add_game(request):
             loser1 = form.cleaned_data['loser1']
             loser2 = form.cleaned_data['loser2']
             date = form.cleaned_data['date']
-            update_players(winner1, winner2, loser1, loser2, date)
+            update_players(winner1, winner2, loser1, loser2, date, 'pool')
             return HttpResponseRedirect(reverse('pool_rank:add_game'))
         else:
             msg = 'Error: invalid form'
@@ -83,11 +95,15 @@ def player_detail(request, netid):
         else:
             place += 1
     player = get_object_or_404(Player, pk=netid)
-    recent_wins1 = PoolGame.objects.all().filter(winner1=netid)
-    recent_wins2 = PoolGame.objects.all().filter(winner2=netid)
+    recent_wins1 = PoolGame.objects.all().filter(winner1=netid).order_by(
+        '-date')
+    recent_wins2 = PoolGame.objects.all().filter(winner2=netid).order_by(
+        '-date')
     recent_wins = get_recent_games(recent_wins1, recent_wins2, 3)
-    recent_losses1 = PoolGame.objects.all().filter(loser1=netid)
-    recent_losses2 = PoolGame.objects.all().filter(loser1=netid)
+    recent_losses1 = PoolGame.objects.all().filter(loser1=netid).order_by(
+        '-date')
+    recent_losses2 = PoolGame.objects.all().filter(loser1=netid).order_by(
+        '-date')
     recent_losses = get_recent_games(recent_losses1, recent_losses2, 3)
     score = get_object_or_404(PoolScore, player=player)
     return render(request, 'pool_rank/player_detail.html', {'player': player,

@@ -10,9 +10,9 @@
         <title>Lodge Rankings</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="{% static 'pool_rank/assets/js/ie/html5shiv.js' %}"></script><![endif]-->
-        <link rel="stylesheet" href="{% static 'pool_rank/assets/css/main.css' %}" />
-        <!--[if lte IE 8]><link rel="stylesheet" href="{% static 'pool_rank/assets/css/ie8.css' %}" /><![endif]-->
+        <!--[if lte IE 8]><script src="{% static 'pong_rank/assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+        <link rel="stylesheet" href="{% static 'pong_rank/assets/css/main.css' %}" />
+        <!--[if lte IE 8]><link rel="stylesheet" href="{% static 'pong_rank/assets/css/ie8.css' %}" /><![endif]-->
     </head>
     <body class="homepage">
         <div id="page-wrapper">
@@ -24,18 +24,18 @@
                         <!-- Logo -->
                             <div id="logo">
                                 <h1><a href="index.html">{{ player.first_name }} {{ player.last_name }}</a></h1>
-                                <p>Pool Individual Player Statistics</p>
+                                <p>Pong Individual Player Statistics</p>
                             </div>
 
                         <!-- Nav -->
                             <nav id="nav">
                                 <ul>
                                     <li class="current"><a href="{% url 'main_index' %}">Main</a></li>
-                                    <li><a href="{% url 'pool_rank:index' %}">Home</a></li>
-                                    <li><a href="{% url 'pool_rank:rankings' %}">Rankings</a></li>
-                                    <li><a href="{% url 'pool_rank:recent_games' %}">Recent Games</a></li>
-                                    <li><a href="{% url 'pool_rank:add_game' %}">Add Game</a></li>
-                                    <li><a href="{% url 'pool_rank:players' %}">Players</a></li>
+                                    <li><a href="{% url 'pong_rank:index' %}">Home</a></li>
+                                    <li><a href="{% url 'pong_rank:rankings' %}">Rankings</a></li>
+                                    <li><a href="{% url 'pong_rank:recent_games' %}">Recent Games</a></li>
+                                    <li><a href="{% url 'pong_rank:add_game' %}">Add Game</a></li>
+                                    <li><a href="{% url 'pong_rank:players' %}">Players</a></li>
                                 </ul>
                             </nav>
 
@@ -136,13 +136,13 @@
 
         <!-- Scripts -->
 
-            <script src="{% static 'pool_rank/assets/js/jquery.min.js' %}"></script>
-            <script src="{% static 'pool_rank/assets/js/jquery.dropotron.min.js' %}"></script>
-            <script src="{% static 'pool_rank/assets/js/skel.min.js' %}"></script>
-            <script src="{% static 'pool_rank/assets/js/skel-viewport.min.js' %}"></script>
-            <script src="{% static 'pool_rank/assets/js/util.js' %}"></script>
-            <!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
-            <script src="{% static 'pool_rank/assets/js/main.js' %}"></script>
+            <script src="{% static 'pong_rank/assets/js/jquery.min.js' %}"></script>
+            <script src="{% static 'pong_rank/assets/js/jquery.dropotron.min.js' %}"></script>
+            <script src="{% static 'pong_rank/assets/js/skel.min.js' %}"></script>
+            <script src="{% static 'pong_rank/assets/js/skel-viewport.min.js' %}"></script>
+            <script src="{% static 'pong_rank/assets/js/util.js' %}"></script>
+            <!--[if lte IE 8]><script src="{% static 'pong_rank/assets/js/ie/respond.min.js' %}"></script><![endif]-->
+            <script src="{% static 'pong_rank/assets/js/main.js' %}"></script>
 
     </body>
 </html>
