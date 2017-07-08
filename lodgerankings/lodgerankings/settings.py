@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'lodgerankings.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydb',
+        'NAME': 'lodgerankings',
         'USER': 'chipsi',
         'PASSWORD': 'lodge810',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
