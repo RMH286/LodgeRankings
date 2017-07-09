@@ -31,7 +31,6 @@
                             <nav id="nav">
                                 <ul>
                                     <li class="current"><a href="{% url 'main_index' %}">Main</a></li>
-                                    <li><a href="{% url 'pool_rank:index' %}">Home</a></li>
                                     <li><a href="{% url 'pool_rank:rankings' %}">Rankings</a></li>
                                     <li><a href="{% url 'pool_rank:recent_games' %}">Recent Games</a></li>
                                     <li><a href="{% url 'pool_rank:add_game' %}">Add Game</a></li>
@@ -46,6 +45,9 @@
                 <div id="intro-wrapper" class="wrapper style1">
                     <div class="title">Add Game</div>
                     <section id="intro" class="container">
+                        {% if msg %}
+                            <h1>{{ msg }}</h1>
+                        {% endif %}
                         <form action="{% url 'pool_rank:add_game' %}" method="post">
                             {% csrf_token %}
                             <div class="row">

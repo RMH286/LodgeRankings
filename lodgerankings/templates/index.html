@@ -29,9 +29,9 @@
                                     <div id="menu">
                                         <ul>
                                             <li><a href="">Home</a></li>
-                                            <li><a href="{% url 'pool_rank:index' %}">Pool</a></li>
-                                            <li><a href="{% url 'pong_rank:index' %}">Pong</a></li>
-                                            <li><a href="{% url 'xbox_rank:index' %}">Xbox</a></li>
+                                            <li><a href="{% url 'pool_rank:rankings' %}">Pool</a></li>
+                                            <li><a href="{% url 'pong_rank:rankings' %}">Pong</a></li>
+                                            <li><a href="{% url 'xbox_rank:rankings' %}">Xbox</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -69,20 +69,20 @@
                 <!-- Two -->
                     <section id="two" class="wrapper alt style2">
                         <section class="spotlight">
-                            <div class="image"><a href="{% url 'pool_rank:index' %}"><img src="static/images/billiards.jpg" alt="" /></a></div><div class="content">
-                                <a href="{% url 'pool_rank:index' %}"><h2>Billiards Rankings</h2></a>
+                            <div class="image"><a href="{% url 'pool_rank:rankings' %}"><img src="static/images/billiards.jpg" alt="" /></a></div><div class="content">
+                                <a href="{% url 'pool_rank:rankings' %}"><h2>Billiards Rankings</h2></a>
                                 <p>See who the top pool players are in the Lodge, or add a new game</p>
                             </div>
                         </section>
                         <section class="spotlight">
-                            <div class="image"><a href="{% url 'pong_rank:index' %}"><img src="static/images/pong.jpg" alt="" /></a></div><div class="content">
-                                <a href="{% url 'pong_rank:index' %}"><h2>Ping Pong Rankings</h2></a>
+                            <div class="image"><a href="{% url 'pong_rank:rankings' %}"><img src="static/images/pong.jpg" alt="" /></a></div><div class="content">
+                                <a href="{% url 'pong_rank:rankings' %}"><h2>Ping Pong Rankings</h2></a>
                                 <p>See who the top pong players are in the Lodge, or add a new game</p>
                             </div>
                         </section>
                         <section class="spotlight">
-                            <div class="image"><a href="{% url 'xbox_rank:index' %}"><img src="static/images/xbox.jpg" alt="" /></a></div><div class="content">
-                                <a href="{% url 'xbox_rank:index' %}"><h2>Xbox Rankings</h2>
+                            <div class="image"><a href="{% url 'xbox_rank:rankings' %}"><img src="static/images/xbox.jpg" alt="" /></a></div><div class="content">
+                                <a href="{% url 'xbox_rank:rankings' %}"><h2>Xbox Rankings</h2>
                                 <p>See who the top Xbox players are in the Lodge, or add a new game</p>
                             </div>
                         </section>

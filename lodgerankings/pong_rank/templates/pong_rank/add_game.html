@@ -46,6 +46,9 @@
                 <div id="intro-wrapper" class="wrapper style1">
                     <div class="title">Add Game</div>
                     <section id="intro" class="container">
+                        {% if msg %}
+                            <h1>{{ msg }}</h1>
+                        {% endif %}
                         <form action="{% url 'pong_rank:add_game' %}" method="post">
                             {% csrf_token %}
                             <div class="row">
