@@ -5,7 +5,7 @@ from django.http import Http404
 from house.models import Player
 from .models import PoolScore, PoolGame
 
-from forms import PoolGameForm
+from .forms import PoolGameForm
 
 from rank_functions import update_players, get_recent_games
 

@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from house.models import Player
 from .models import XboxScore, XboxGame
 
-from forms import XboxGameForm
+from .forms import XboxGameForm
 
 from rank_functions import update_players, get_recent_games
 

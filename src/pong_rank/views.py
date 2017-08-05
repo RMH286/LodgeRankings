@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from house.models import Player
 from .models import PongScore, PongGame
 
-from forms import PongGameForm
+from .forms import PongGameForm
 
 from rank_functions import update_players, get_recent_games
 
