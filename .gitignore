@@ -4,3 +4,4 @@ __pyache__
 db.sqlite3
 /static
 .DS_Store
+src/lib/*
