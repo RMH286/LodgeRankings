@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse
+from django.shortcuts import render, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.http import Http404
 
 from house.models import Player
 from .models import XboxScore, XboxGame
@@ -95,7 +96,7 @@ def add_game(request):
             except Http404 as e:
                 msg = 'Error: invalid netid'
                 return render(request, 'xbox_rank/add_game.html', {'form': form, 'msg': msg})
-            return HttpResponseRedirect(reverse('xbox_rank:add_game'))
+            return HttpResponseRedirect('xbox_rank:add_game')
         else:
             msg = 'Error: invalid form'
             return render(request, 'xbox_rank/add_game.html', {'form': form, 'msg': msg})
