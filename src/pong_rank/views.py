@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 
@@ -97,7 +97,7 @@ def add_game(request):
             except Http404 as e:
                 msg = 'Error: invalid netid'
                 return render(request, 'pong_rank/add_game.html', {'form': form, 'msg': msg})
-            return HttpResponseRedirect('pong_rank:add_game')
+            return render(request, 'pong_rank/add_game.html', {'form': form})
         else:
             msg = 'Error: invalid form'
             return render(request, 'pong_rank/add_game.html', {'form': form, 'msg': msg})
