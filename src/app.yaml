@@ -19,7 +19,7 @@ libraries:
   version: 1.2.5
   
 - name: django
-  version: "1.9"
+  version: "1.11"
 # [END django_app]
 
 # Google App Engine limits application deployments to 10,000 uploaded files per
